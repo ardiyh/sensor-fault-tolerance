@@ -61,7 +61,7 @@ def fig_contamination(fault="dropout"):
     """Healthy-sensor ratio R_H and faulty-sensor MAE vs fraction, random vs clustered faults."""
     cols = [("ratio_healthy_mae_nz_mean", "random"), ("ratio_healthy_mae_nz_mean", "clustered"),
             ("faulty_mae_nz_mean", "random"), ("faulty_mae_nz_mean", "clustered")]
-    fig, axes = plt.subplots(2, 4, figsize=(WIDTH, 6.9 * CM), sharex=True)
+    fig, axes = plt.subplots(2, 4, figsize=(WIDTH, 6.6 * CM), sharex=True)
     for r, (ds, dname) in enumerate(DATASETS):
         g = groups(ds)
         for c, (col, pattern) in enumerate(cols):

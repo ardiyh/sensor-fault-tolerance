@@ -56,6 +56,26 @@ MAE on non-zero targets (mph). 5 mask seeds × (5 training seeds per student set
 | M10 | Recurrent references at 20% random (METR-LA): DCRNN ×3.03 dropout (4.58 → 13.88), ×1.12 stuck, ×1.32 long stuck, ×1.05 noise, ×1.14 bias; recurrent no-mixing ×2.78 / 1.11 / 1.27 / 1.07 / 1.15; with persistence these non-student models lose 5–32% under stuck/noise/bias vs ≤10% for students. Under dropout all non-seasonal forecasters end at 13.9–15.8 mph | `metr-la__groups.csv` (groups dcrnn_fixed, gru_p2) | mean over 5 masks | **VERIFIED** |
 | M11 | DCRNN contaminates mildly and compensates little: R_H 1.11 at 20% random dropout (1.03–1.32 over 5–50%; 1.04–1.51 clustered), Wilcoxon p<0.05 in every run; faulty-sensor MAE 49.6 mph (non-spatial 50.7–56.9, students 19.1–21.4). Front-end: DCRNN 13.88 → 5.21 at 20% dropout | `metr-la__tests.json` `contamination`, `metr-la__groups.csv` | Wilcoxon per run | **VERIFIED** |
 
+## Full grid — PEMS-BAY
+
+Source: `results/full/pems-bay__{light,gru,dcrnn}.csv` + `.pernode.npz` (rtx, 12 Nov 2026, all rc=0),
+aggregated by `scripts/analyze_full.py` → `pems-bay__groups.csv`, `pems-bay__tests.json`; clean
+diagnostics `results/clean_bias_pems-bay.json`. Recurrent models: 3 mask seeds, front-end on dropout only.
+
+| # | Claim | Artefact | Statistic | Status |
+|---|---|---|---|---|
+| B1 | Clean MAE: DCRNN 1.80, recurrent no-mixing 2.10, persistence 2.17, seasonal naive 3.37, students 3.58–3.79 — same order as METR-LA (M1) | `pems-bay__groups.csv` | mean (± std over 5 training seeds) | **VERIFIED** |
+| B2 | 20% random dropout: students ×2.50–3.31, persistence ×6.54, recurrent ×5.02, DCRNN ×6.37; Student-MLP KD 10.85, Student-Attn task 10.38, KD 8.95 vs DCRNN 11.48 (3 of 4 students below DCRNN) | `pems-bay__groups.csv` | mean over runs | **VERIFIED** |
+| B3 | Stuck/noise/bias at 20%: students ≤ ×1.104 (long stuck); persistence/recurrent/DCRNN ×1.09–1.44 | `pems-bay__groups.csv` | mean over runs | **VERIFIED** |
+| B4 | Bias does NOT lower student error on PEMS-BAY (×1.005–1.033 at 20%); students are unbiased (mean signed error −0.06 to +0.10 mph). M5 is therefore METR-LA-specific, consistent with the under-prediction explanation (F8) | `pems-bay__groups.csv`, `results/clean_bias_pems-bay.json` | mean over runs | **VERIFIED** (M5 does not replicate; stated in paper) |
+| B5 | Contamination, 20% random dropout: students R_H 2.16–2.83 (50%: 3.16–6.40), p<0.05 in every run; faulty MAE 14.1–20.1 vs non-spatial 44.4–62.4 | `pems-bay__tests.json` `contamination`, `pems-bay__groups.csv` | Wilcoxon per run | **VERIFIED** |
+| B6 | DCRNN spreads without compensating: R_H 1.81 at 20% (p<0.05 in 3/3 runs at every fraction), faulty MAE 44.5 = recurrent no-mixing 44.4 | same | Wilcoxon per run | **VERIFIED** |
+| B7 | Clustered 20% dropout: students R_H 1.11–1.17; faulty MAE Student-MLP 50.7–52.3 (no better than non-spatial 44.5–62.5) vs Student-Attn 25.0–26.4 (global attention reaches beyond the cluster) | `pems-bay__groups.csv` | mean over runs | **VERIFIED** |
+| B8 | KD (Student-Attn, 5 vs 5): clean 3.576 vs 3.584 (p=0.69). Random dropout healthy-sensor degradation lower with KD on average (20%: +129% vs +170%) but seed-level p≥0.095 at every fraction; significant only for some clustered dropout (5,10,30%: p=0.016–0.032) and bias settings | `pems-bay__tests.json` `pairs.kd_attn`; per-seed MAE from `pems-bay__light.csv` | seed-level Mann–Whitney | **VERIFIED** — "no consistent effect"; tendency only |
+| B9 | Student-MLP KD (one checkpoint) degrades LESS than all 5 retrained task-only MLPs (×2.86 vs 3.24–3.37 at 20% dropout; outside band in 70% of settings, Paper 2 task MLP outside in 8%) — opposite direction to METR-LA (M7) | `pems-bay__tests.json` `mlp_kd_vs_task_band` | band | RUN — n=1, inconsistent across datasets |
+| B10 | Front-end at 20% random dropout: Student-Attn 10.38 → 3.69 (clean 3.58), DCRNN 11.48 → 2.22, persistence 14.21 → 2.59; clean cost +0.1% (flags 0.5% of healthy windows); short stuck change −0.9% to +3.8% (persistence worse) | `pems-bay__groups.csv`, `pems-bay__tests.json` `repair` | mean over runs | **VERIFIED** |
+| B11 | Dropout training: R_H 0.99 vs 2.47 at 20% random dropout; p=0.008 in all 30 random dropout/stuck tests; clean MAE +2.4% (3.571 → 3.655, p=0.008); unlike METR-LA it DOES reduce clustered contamination (healthy p=0.008 at every fraction); no noise cost (p≥0.22) | `pems-bay__tests.json` `pairs.aug_attn` | seed-level Mann–Whitney | **VERIFIED** — M9's clustered and noise caveats are METR-LA-specific |
+
 ## Non-overlap audit (must pass before submission)
 
 | Prior paper | Owned claim | This paper must not restate |
@@ -70,7 +90,8 @@ MAE on non-zero targets (mph). 5 mask seeds × (5 training seeds per student set
 - [ ] No "our prior work" identity leaks; Paper 2 cited third-person
 - [ ] "KD+AT" described accurately: the attention-transfer term is numerically negligible
       (≤ 2/N² per the 9 Oct 2026 audit), so any KD effect is an output-distillation effect
-- [ ] Word count ≤ 4,000; 8 pages; ≥ 25 IEEE references, ≥ 15 recent journal articles; self-citations ≤ 5
+- [x] Word count ≤ 4,000; 8 pages; ≥ 25 IEEE references, ≥ 15 recent journal articles; self-citations ≤ 5
+      (`scripts/audit_manuscript.py`, 12 Nov 2026: 8 pages, 2.6k body words, 32 refs, 17 recent journal, 1 self-cite)
 - [ ] Abstract 100–200 words, past tense, no citations
 - [ ] Figure 1 is the sensor → roadside unit → forecaster → TMC chain with the fault entry points
 - [ ] Every table number traceable to a row above
