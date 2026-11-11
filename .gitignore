@@ -1,0 +1,9 @@
+# checkpoints, logs, and large prediction dumps stay out of the repo
+*.pth
+*.log
+logs/
+*.npz
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
