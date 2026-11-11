@@ -1,0 +1,30 @@
+{
+  "dataset": "metr-la",
+  "windows": 64,
+  "dcrnn": {
+    "checkpoint": "dcrnn_metr-la.pth",
+    "max_forecast_change_at_kept_sensor_when_all_others_zeroed": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "student_mlp_baseline": {
+    "checkpoint": "student_baseline_metr-la.pth",
+    "max_forecast_change_at_kept_sensor_when_all_others_zeroed": [
+      62.45053482055664,
+      47.37568283081055,
+      56.55402755737305
+    ]
+  },
+  "student_attn_baseline": {
+    "checkpoint": "student_attention_baseline_metr-la.pth",
+    "max_forecast_change_at_kept_sensor_when_all_others_zeroed": [
+      64.70794677734375,
+      62.77912139892578,
+      65.01876831054688
+    ]
+  },
+  "dcrnn_support_diagonal_max": 0.0,
+  "dcrnn_support_offdiagonal_max": 1.0
+}

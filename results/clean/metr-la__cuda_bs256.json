@@ -1,0 +1,95 @@
+{
+  "dataset": "metr-la",
+  "device": "cuda",
+  "batch_size": 256,
+  "tolerance_rel": 0.005,
+  "all_pass": true,
+  "rows": [
+    {
+      "model": "persistence",
+      "checkpoint": null,
+      "mae": 5.436984062194824,
+      "nmae": 0.10715533047914505,
+      "rmse": 12.960319519042969,
+      "seconds": 0.4,
+      "max_rel_dev": null,
+      "status": "NO_REFERENCE"
+    },
+    {
+      "model": "seasonal_naive",
+      "checkpoint": null,
+      "mae": 13.326072692871094,
+      "nmae": 0.2626382112503052,
+      "rmse": 25.19295310974121,
+      "seconds": 0.4,
+      "max_rel_dev": null,
+      "status": "NO_REFERENCE"
+    },
+    {
+      "model": "dcrnn",
+      "checkpoint": "dcrnn_metr-la.pth",
+      "mae": 6.197327136993408,
+      "nmae": 0.12214063107967377,
+      "rmse": 12.081679344177246,
+      "seconds": 7.3,
+      "paper2_mae": 6.197144985198975,
+      "max_rel_dev": 2.939285695902072e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "student_mlp_baseline",
+      "checkpoint": "student_baseline_metr-la.pth",
+      "mae": 9.625425338745117,
+      "nmae": 0.18970364332199097,
+      "rmse": 15.095460891723633,
+      "seconds": 1.6,
+      "paper2_mae": 9.624948501586914,
+      "max_rel_dev": 4.954178803018294e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "student_mlp_kd",
+      "checkpoint": "best_student_metr-la.pth",
+      "mae": 9.242491722106934,
+      "nmae": 0.1821565479040146,
+      "rmse": 15.083658218383789,
+      "seconds": 0.5,
+      "paper2_mae": 9.242216110229492,
+      "max_rel_dev": 2.9820972486049868e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "student_attn_baseline",
+      "checkpoint": "student_attention_baseline_metr-la.pth",
+      "mae": 9.319000244140625,
+      "nmae": 0.18366442620754242,
+      "rmse": 14.91724681854248,
+      "seconds": 0.6,
+      "paper2_mae": 9.319304466247559,
+      "max_rel_dev": 3.264429324190132e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "student_attn_kd_at",
+      "checkpoint": "best_student_attention_metr-la_v1.pth",
+      "mae": 9.027249336242676,
+      "nmae": 0.17791442573070526,
+      "rmse": 14.956317901611328,
+      "seconds": 0.6,
+      "paper2_mae": 9.027405738830566,
+      "max_rel_dev": 1.732530836306978e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "last_window_naive",
+      "checkpoint": null,
+      "mae": 7.432464599609375,
+      "nmae": 0.14648345112800598,
+      "rmse": 16.346975326538086,
+      "seconds": 0.4,
+      "paper2_mae": 7.432464599609375,
+      "max_rel_dev": 0.0,
+      "status": "PASS"
+    }
+  ]
+}
