@@ -56,3 +56,23 @@ def test_persistence_repeats_last_input():
     x = np.arange(2 * 3 * 12, dtype=np.float32).reshape(2, 3, 12)
     p = runner.naive_predict("persistence", x)
     assert p.shape == (2, 3, 12) and (p == x[:, :, -1:]).all()
+
+
+def test_subset_metrics_from_sums_match_split_metrics():
+    from src.metrics import node_sums, subset_metrics, sums_to_numpy
+    pred, true = _pair(seed=3)
+    mask = np.array([True, False, False, True, False, False, False, True])
+    ref = split_metrics(pred, true, mask)
+    fast = subset_metrics(sums_to_numpy(node_sums(torch.from_numpy(pred), torch.from_numpy(true))), mask)
+    for k, v in ref.items():
+        assert np.isclose(fast[k], v, rtol=1e-5, equal_nan=True), k
+
+
+def test_stuck_long_and_torch_naive():
+    from src.faults import inject
+    x = np.arange(2 * 3 * 12, dtype=np.float32).reshape(2, 3, 12)
+    hold = np.full((2, 3), 7.0, dtype=np.float32)
+    out = inject(x, np.array([False, True, False]), "stuck_long", hold=hold)
+    assert (out[:, 1] == 7.0).all() and np.array_equal(out[:, [0, 2]], x[:, [0, 2]])
+    p = runner.naive_predict("persistence", torch.from_numpy(x))
+    assert torch.equal(p, torch.from_numpy(runner.naive_predict("persistence", x)))

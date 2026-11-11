@@ -13,6 +13,7 @@ from src import stc_bridge
 
 INPUT_LEN = 12
 HORIZON = 12
+HOLD = 36  # stuck_long: the frozen value is the reading 36 steps (3 h) before the window start
 MODELS = ("persistence", "seasonal_naive", "dcrnn", "student_mlp_baseline", "student_mlp_kd",
           "student_attn_baseline", "student_attn_kd_at")
 LEARNED = MODELS[2:]
@@ -31,7 +32,7 @@ LOCAL_CKPT_DIR = Path(__file__).resolve().parents[1] / "checkpoints"
 def sliding(series: np.ndarray, start: int, n_windows: int, length: int) -> np.ndarray:
     """series [T, N] -> windows [W, N, length] with window w = series[start+w : start+w+length]."""
     idx = start + np.arange(n_windows)[:, None] + np.arange(length)[None, :]
-    return np.transpose(series[idx], (0, 2, 1))
+    return np.ascontiguousarray(np.transpose(series[idx], (0, 2, 1)))
 
 
 def load_split(dataset: str) -> dict:
@@ -56,6 +57,9 @@ def load_split(dataset: str) -> dict:
         "y": sliding(series, test_start + INPUT_LEN, n_windows, HORIZON),
         # seasonal-naive input: the HORIZON readings one period before each target block
         "x_sn": sliding(series, test_start + INPUT_LEN - period, n_windows, HORIZON),
+        # stuck_long frozen values for each input window: [W, N]
+        "hold": series[test_start - HOLD + np.arange(n_windows)],
+        "hold_sn": series[test_start + INPUT_LEN - period - HOLD + np.arange(n_windows)],
         "edge_index": edge_index,
         "adj": adj,
         "scaler": scaler,
@@ -76,8 +80,17 @@ def checkpoint_path(name: str, dataset: str, tag: str = None) -> Path:
     return LOCAL_CKPT_DIR / fname.replace(".pth", f"_{tag}.pth")
 
 
-def load_model(name: str, dataset: str, num_nodes: int, device, tag: str = None):
-    path = checkpoint_path(name, dataset, tag)
+def load_model(name: str, dataset: str, num_nodes: int, device, tag: str = None, path=None):
+    """Load a checkpoint of model type `name`; `path` (if given) overrides the default name."""
+    if name == "dcrnn_fixed":
+        from src.dcrnn_fixed import DCRNNTeacher
+        path = Path(path)
+        model = DCRNNTeacher(num_nodes=num_nodes, in_channels=1, hidden_channels=64, out_channels=1,
+                             num_layers=2, K=2, prediction_length=12, dropout=0.1).to(device)
+        model.load_state_dict(torch.load(path, map_location=device, weights_only=True))
+        model.eval()
+        return model, path
+    path = Path(path) if path is not None else checkpoint_path(name, dataset, tag)
     if not path.is_file():
         raise FileNotFoundError(f"{name} checkpoint missing for {dataset}: {path}")
     load_dcrnn, load_student_mlp, load_student_attention = stc_bridge.model_loaders()
@@ -105,10 +118,23 @@ def predict(model, x_phys: np.ndarray, split: dict, device, batch_size: int = 64
     return scaler.inverse_transform(torch.cat(out).numpy())
 
 
+def predict_t(model, x_phys: torch.Tensor, split: dict, batch_size: int = 1024) -> torch.Tensor:
+    """Torch version of predict(); x_phys [W, N, In] on the model's device -> physical forecasts."""
+    mean, std = float(split["scaler"].mean), float(split["scaler"].std)
+    edge_index = split["edge_index"].to(x_phys.device)
+    out = []
+    with torch.no_grad():
+        for i in range(0, len(x_phys), batch_size):
+            xb = (x_phys[i:i + batch_size] - mean) / std
+            out.append(model(xb, edge_index).float())
+    return torch.cat(out) * std + mean
+
+
 def naive_predict(name: str, x_phys: np.ndarray) -> np.ndarray:
     """Persistence repeats the last input sample; seasonal naive returns its (period-old) input."""
     if name == "persistence":
-        return np.repeat(x_phys[:, :, -1:], HORIZON, axis=2)
+        return x_phys[:, :, -1:].repeat_interleave(HORIZON, 2) if torch.is_tensor(x_phys) \
+            else np.repeat(x_phys[:, :, -1:], HORIZON, axis=2)
     if name == "seasonal_naive":
-        return x_phys.copy()
+        return x_phys.clone() if torch.is_tensor(x_phys) else x_phys.copy()
     raise ValueError(name)

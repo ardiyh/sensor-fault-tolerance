@@ -6,6 +6,8 @@ corrupted in every input window of the evaluation period. Targets are never touc
 Fault models (x is a window of physical readings, faulty sensor n):
     dropout  x[n, t] = 0                    (the dataset's own code for a missing reading)
     stuck    x[n, t] = x[n, 0]              (sensor froze at the first sample of the window)
+    stuck_long x[n, t] = h[n]               (sensor froze HOLD steps before the window start;
+                                             h is that older reading, supplied by the caller)
     noise    x[n, t] = x[n, t] + e,  e ~ N(0, sigma^2)
     bias     x[n, t] = x[n, t] + b
 
@@ -15,7 +17,7 @@ Spatial patterns:
 """
 import numpy as np
 
-FAULT_TYPES = ("dropout", "stuck", "noise", "bias")
+FAULT_TYPES = ("dropout", "stuck", "stuck_long", "noise", "bias")
 PATTERNS = ("random", "clustered")
 
 
@@ -63,7 +65,7 @@ def select_faulty_nodes(n_nodes: int, frac: float, pattern: str, rng: np.random.
 
 
 def inject(x: np.ndarray, mask: np.ndarray, kind: str, rng: np.random.Generator = None,
-           sigma: float = None, bias: float = None) -> np.ndarray:
+           sigma: float = None, bias: float = None, hold: np.ndarray = None) -> np.ndarray:
     """Corrupt the faulty sensors of every window. x: [W, N, L] physical units. Returns a copy."""
     if x.ndim != 3 or mask.shape != (x.shape[1],):
         raise ValueError(f"expected x [W, N, L] and mask [N], got {x.shape} and {mask.shape}")
@@ -74,6 +76,10 @@ def inject(x: np.ndarray, mask: np.ndarray, kind: str, rng: np.random.Generator 
         out[:, mask, :] = 0.0
     elif kind == "stuck":
         out[:, mask, :] = x[:, mask, :1]
+    elif kind == "stuck_long":
+        if hold is None or hold.shape != x.shape[:2]:
+            raise ValueError("stuck_long needs hold values of shape [W, N]")
+        out[:, mask, :] = hold[:, mask, None]
     elif kind == "noise":
         if sigma is None or rng is None:
             raise ValueError("noise needs sigma and rng")

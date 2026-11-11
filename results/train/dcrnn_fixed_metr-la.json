@@ -1,0 +1,15 @@
+[
+  {
+    "name": "DCRNN (fixed diffusion, Paper 7)",
+    "dataset": "metr-la",
+    "mae": 5.632848739624023,
+    "rmse": 11.502679824829102,
+    "mape": 5.496854782104492,
+    "nmae": 0.11101534962654114,
+    "mase": 1.927598136330357,
+    "params": 371393,
+    "epochs_requested": 50,
+    "batch_size": 64,
+    "checkpoint": "/home/hilmi/paper7_SFT/SFT-code/checkpoints/dcrnn_fixed_metr-la_p7.pth"
+  }
+]

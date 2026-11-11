@@ -1,0 +1,248 @@
+[
+ {
+  "label": "persistence",
+  "name": "persistence",
+  "group": "persistence",
+  "path": null
+ },
+ {
+  "label": "seasonal_naive",
+  "name": "seasonal_naive",
+  "group": "seasonal_naive",
+  "path": null
+ },
+ {
+  "label": "gru_p2",
+  "name": "dcrnn",
+  "group": "gru_p2",
+  "path": "p2:dcrnn_metr-la.pth"
+ },
+ {
+  "label": "dcrnn_fixed",
+  "name": "dcrnn_fixed",
+  "group": "dcrnn_fixed",
+  "path": "checkpoints/dcrnn_fixed_metr-la_p7.pth"
+ },
+ {
+  "label": "mlp_task_p2",
+  "name": "student_mlp_baseline",
+  "group": "mlp_task_p2",
+  "path": "p2:student_baseline_metr-la.pth"
+ },
+ {
+  "label": "mlp_kd_p2",
+  "name": "student_mlp_kd",
+  "group": "mlp_kd_p2",
+  "path": "p2:best_student_metr-la.pth"
+ },
+ {
+  "label": "attn_task_rev1_s0",
+  "name": "student_attn_baseline",
+  "group": "attn_task_rev1",
+  "seed": 0,
+  "path": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed0.pth"
+ },
+ {
+  "label": "attn_kd_rev1_s0",
+  "name": "student_attn_kd_at",
+  "group": "attn_kd_rev1",
+  "seed": 0,
+  "path": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed0_v1.pth"
+ },
+ {
+  "label": "mlp_task_p7_s0",
+  "name": "student_mlp_baseline",
+  "group": "mlp_task_p7",
+  "seed": 0,
+  "path": "checkpoints/student_baseline_metr-la_p7s0.pth"
+ },
+ {
+  "label": "mlp_aug_p7_s0",
+  "name": "student_mlp_baseline",
+  "group": "mlp_aug_p7",
+  "seed": 0,
+  "path": "checkpoints/student_baseline_metr-la_p7augs0.pth"
+ },
+ {
+  "label": "attn_task_p7_s0",
+  "name": "student_attn_baseline",
+  "group": "attn_task_p7",
+  "seed": 0,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7s0.pth"
+ },
+ {
+  "label": "attn_aug_p7_s0",
+  "name": "student_attn_baseline",
+  "group": "attn_aug_p7",
+  "seed": 0,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7augs0.pth"
+ },
+ {
+  "label": "attn_task_rev1_s1",
+  "name": "student_attn_baseline",
+  "group": "attn_task_rev1",
+  "seed": 1,
+  "path": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed1.pth"
+ },
+ {
+  "label": "attn_kd_rev1_s1",
+  "name": "student_attn_kd_at",
+  "group": "attn_kd_rev1",
+  "seed": 1,
+  "path": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed1_v1.pth"
+ },
+ {
+  "label": "mlp_task_p7_s1",
+  "name": "student_mlp_baseline",
+  "group": "mlp_task_p7",
+  "seed": 1,
+  "path": "checkpoints/student_baseline_metr-la_p7s1.pth"
+ },
+ {
+  "label": "mlp_aug_p7_s1",
+  "name": "student_mlp_baseline",
+  "group": "mlp_aug_p7",
+  "seed": 1,
+  "path": "checkpoints/student_baseline_metr-la_p7augs1.pth"
+ },
+ {
+  "label": "attn_task_p7_s1",
+  "name": "student_attn_baseline",
+  "group": "attn_task_p7",
+  "seed": 1,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7s1.pth"
+ },
+ {
+  "label": "attn_aug_p7_s1",
+  "name": "student_attn_baseline",
+  "group": "attn_aug_p7",
+  "seed": 1,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7augs1.pth"
+ },
+ {
+  "label": "attn_task_rev1_s2",
+  "name": "student_attn_baseline",
+  "group": "attn_task_rev1",
+  "seed": 2,
+  "path": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed2.pth"
+ },
+ {
+  "label": "attn_kd_rev1_s2",
+  "name": "student_attn_kd_at",
+  "group": "attn_kd_rev1",
+  "seed": 2,
+  "path": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed2_v1.pth"
+ },
+ {
+  "label": "mlp_task_p7_s2",
+  "name": "student_mlp_baseline",
+  "group": "mlp_task_p7",
+  "seed": 2,
+  "path": "checkpoints/student_baseline_metr-la_p7s2.pth"
+ },
+ {
+  "label": "mlp_aug_p7_s2",
+  "name": "student_mlp_baseline",
+  "group": "mlp_aug_p7",
+  "seed": 2,
+  "path": "checkpoints/student_baseline_metr-la_p7augs2.pth"
+ },
+ {
+  "label": "attn_task_p7_s2",
+  "name": "student_attn_baseline",
+  "group": "attn_task_p7",
+  "seed": 2,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7s2.pth"
+ },
+ {
+  "label": "attn_aug_p7_s2",
+  "name": "student_attn_baseline",
+  "group": "attn_aug_p7",
+  "seed": 2,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7augs2.pth"
+ },
+ {
+  "label": "attn_task_rev1_s3",
+  "name": "student_attn_baseline",
+  "group": "attn_task_rev1",
+  "seed": 3,
+  "path": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed3.pth"
+ },
+ {
+  "label": "attn_kd_rev1_s3",
+  "name": "student_attn_kd_at",
+  "group": "attn_kd_rev1",
+  "seed": 3,
+  "path": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed3_v1.pth"
+ },
+ {
+  "label": "mlp_task_p7_s3",
+  "name": "student_mlp_baseline",
+  "group": "mlp_task_p7",
+  "seed": 3,
+  "path": "checkpoints/student_baseline_metr-la_p7s3.pth"
+ },
+ {
+  "label": "mlp_aug_p7_s3",
+  "name": "student_mlp_baseline",
+  "group": "mlp_aug_p7",
+  "seed": 3,
+  "path": "checkpoints/student_baseline_metr-la_p7augs3.pth"
+ },
+ {
+  "label": "attn_task_p7_s3",
+  "name": "student_attn_baseline",
+  "group": "attn_task_p7",
+  "seed": 3,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7s3.pth"
+ },
+ {
+  "label": "attn_aug_p7_s3",
+  "name": "student_attn_baseline",
+  "group": "attn_aug_p7",
+  "seed": 3,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7augs3.pth"
+ },
+ {
+  "label": "attn_task_rev1_s4",
+  "name": "student_attn_baseline",
+  "group": "attn_task_rev1",
+  "seed": 4,
+  "path": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed4.pth"
+ },
+ {
+  "label": "attn_kd_rev1_s4",
+  "name": "student_attn_kd_at",
+  "group": "attn_kd_rev1",
+  "seed": 4,
+  "path": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed4_v1.pth"
+ },
+ {
+  "label": "mlp_task_p7_s4",
+  "name": "student_mlp_baseline",
+  "group": "mlp_task_p7",
+  "seed": 4,
+  "path": "checkpoints/student_baseline_metr-la_p7s4.pth"
+ },
+ {
+  "label": "mlp_aug_p7_s4",
+  "name": "student_mlp_baseline",
+  "group": "mlp_aug_p7",
+  "seed": 4,
+  "path": "checkpoints/student_baseline_metr-la_p7augs4.pth"
+ },
+ {
+  "label": "attn_task_p7_s4",
+  "name": "student_attn_baseline",
+  "group": "attn_task_p7",
+  "seed": 4,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7s4.pth"
+ },
+ {
+  "label": "attn_aug_p7_s4",
+  "name": "student_attn_baseline",
+  "group": "attn_aug_p7",
+  "seed": 4,
+  "path": "checkpoints/student_attention_baseline_metr-la_p7augs4.pth"
+ }
+]

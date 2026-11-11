@@ -1,0 +1,392 @@
+[
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/best_student_attention_metr-la_seed0_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 0,
+    "mae": 9.196208000183105,
+    "nmae": 0.1812443646141714,
+    "paper2_nmae_seed": 0.1831,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/best_student_attention_metr-la_seed1_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 1,
+    "mae": 8.991902351379395,
+    "nmae": 0.17721778675688749,
+    "paper2_nmae_seed": 0.1772,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/best_student_attention_metr-la_seed2_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 2,
+    "mae": 9.065062522888184,
+    "nmae": 0.1786596711509671,
+    "paper2_nmae_seed": 0.1788,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/best_student_attention_metr-la_seed3_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 3,
+    "mae": 9.002861022949219,
+    "nmae": 0.17743376680710476,
+    "paper2_nmae_seed": 0.1774,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/best_student_attention_metr-la_seed4_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 4,
+    "mae": 9.077640533447266,
+    "nmae": 0.17890756610199973,
+    "paper2_nmae_seed": 0.179,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/student_attention_baseline_metr-la_seed0.pth",
+    "model": "student_attn_baseline",
+    "seed": 0,
+    "mae": 9.17031478881836,
+    "nmae": 0.18073404572604596,
+    "paper2_nmae_seed": 0.1836,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/student_attention_baseline_metr-la_seed2.pth",
+    "model": "student_attn_baseline",
+    "seed": 2,
+    "mae": 9.361573219299316,
+    "nmae": 0.1845034812052059,
+    "paper2_nmae_seed": 0.1829,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/student_attention_baseline_metr-la_seed3.pth",
+    "model": "student_attn_baseline",
+    "seed": 3,
+    "mae": 9.280926704406738,
+    "nmae": 0.1829140514805018,
+    "paper2_nmae_seed": 0.1843,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/backup/student_attention_baseline_metr-la_seed4.pth",
+    "model": "student_attn_baseline",
+    "seed": 4,
+    "mae": 9.361124992370605,
+    "nmae": 0.18449464728095194,
+    "paper2_nmae_seed": 0.1845,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed0_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 0,
+    "mae": 9.191665649414062,
+    "nmae": 0.18115484124987022,
+    "paper2_nmae_seed": 0.1831,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed1_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 1,
+    "mae": 9.125455856323242,
+    "nmae": 0.17984993906847735,
+    "paper2_nmae_seed": 0.1772,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed2_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 2,
+    "mae": 9.254287719726562,
+    "nmae": 0.18238903444606447,
+    "paper2_nmae_seed": 0.1788,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed3_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 3,
+    "mae": 9.099043846130371,
+    "nmae": 0.17932939538291753,
+    "paper2_nmae_seed": 0.1774,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/best_student_attention_metr-la_rev1batchF_matchedkdat_metr-la_seed4_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 4,
+    "mae": 9.205456733703613,
+    "nmae": 0.18142664418313906,
+    "paper2_nmae_seed": 0.179,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed0.pth",
+    "model": "student_attn_baseline",
+    "seed": 0,
+    "mae": 9.386524200439453,
+    "nmae": 0.18499523005681454,
+    "paper2_nmae_seed": 0.1836,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed1.pth",
+    "model": "student_attn_baseline",
+    "seed": 1,
+    "mae": 9.283733367919922,
+    "nmae": 0.18296936688279833,
+    "paper2_nmae_seed": 0.1826,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed2.pth",
+    "model": "student_attn_baseline",
+    "seed": 2,
+    "mae": 9.39872932434082,
+    "nmae": 0.1852357759346912,
+    "paper2_nmae_seed": 0.1829,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed3.pth",
+    "model": "student_attn_baseline",
+    "seed": 3,
+    "mae": 9.303986549377441,
+    "nmae": 0.18336852868999218,
+    "paper2_nmae_seed": 0.1843,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "metr-la",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_metr-la_rev1parity_seed4.pth",
+    "model": "student_attn_baseline",
+    "seed": 4,
+    "mae": 9.317545890808105,
+    "nmae": 0.1836357642964659,
+    "paper2_nmae_seed": 0.1845,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/best_student_attention_pems-bay_seed0_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 0,
+    "mae": 3.7662153244018555,
+    "nmae": 0.06029672950235525,
+    "paper2_nmae_seed": 0.0578,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/best_student_attention_pems-bay_seed2_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 2,
+    "mae": 3.558079242706299,
+    "nmae": 0.05696449171542779,
+    "paper2_nmae_seed": 0.057,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/best_student_attention_pems-bay_seed3_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 3,
+    "mae": 3.5713391304016113,
+    "nmae": 0.05717678118714642,
+    "paper2_nmae_seed": 0.0572,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/best_student_attention_pems-bay_seed4_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 4,
+    "mae": 3.5691640377044678,
+    "nmae": 0.05714195817127889,
+    "paper2_nmae_seed": 0.0572,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/best_student_pems-bay.pth",
+    "model": "student_mlp_kd",
+    "seed": null,
+    "mae": 3.793583869934082,
+    "nmae": 0.06073489717060763,
+    "paper2_mae": 3.793628454208374,
+    "matches_paper2": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/student_attention_baseline_pems-bay_seed0.pth",
+    "model": "student_attn_baseline",
+    "seed": 0,
+    "mae": 3.665188789367676,
+    "nmae": 0.05867930481183158,
+    "paper2_nmae_seed": 0.0579,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/student_attention_baseline_pems-bay_seed2.pth",
+    "model": "student_attn_baseline",
+    "seed": 2,
+    "mae": 3.5577664375305176,
+    "nmae": 0.056959483735945365,
+    "paper2_nmae_seed": 0.057,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/student_attention_baseline_pems-bay_seed3.pth",
+    "model": "student_attn_baseline",
+    "seed": 3,
+    "mae": 3.593181610107422,
+    "nmae": 0.05752647709591423,
+    "paper2_nmae_seed": 0.0575,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/student_attention_baseline_pems-bay_seed4.pth",
+    "model": "student_attn_baseline",
+    "seed": 4,
+    "mae": 3.604069709777832,
+    "nmae": 0.05770079447930113,
+    "paper2_nmae_seed": 0.0577,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/backup/student_baseline_pems-bay.pth",
+    "model": "student_mlp_baseline",
+    "seed": null,
+    "mae": 3.8086981773376465,
+    "nmae": 0.0609768757158128,
+    "paper2_mae": 3.8086752891540527,
+    "matches_paper2": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/best_student_attention_pems-bay_rev1batchF_matchedkdat_pems-bay_seed0_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 0,
+    "mae": 3.5785036087036133,
+    "nmae": 0.057291483765993245,
+    "paper2_nmae_seed": 0.0578,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/best_student_attention_pems-bay_rev1batchF_matchedkdat_pems-bay_seed1_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 1,
+    "mae": 3.5957939624786377,
+    "nmae": 0.05756830059529608,
+    "paper2_nmae_seed": 0.0582,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/best_student_attention_pems-bay_rev1batchF_matchedkdat_pems-bay_seed2_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 2,
+    "mae": 3.565044641494751,
+    "nmae": 0.05707600705123511,
+    "paper2_nmae_seed": 0.057,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/best_student_attention_pems-bay_rev1batchF_matchedkdat_pems-bay_seed3_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 3,
+    "mae": 3.5875942707061768,
+    "nmae": 0.05743702435264384,
+    "paper2_nmae_seed": 0.0572,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/best_student_attention_pems-bay_rev1batchF_matchedkdat_pems-bay_seed4_v1.pth",
+    "model": "student_attn_kd_at",
+    "seed": 4,
+    "mae": 3.574909210205078,
+    "nmae": 0.05723393780663568,
+    "paper2_nmae_seed": 0.0572,
+    "matches_paper2_seed": true
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_pems-bay_rev1parity_seed0.pth",
+    "model": "student_attn_baseline",
+    "seed": 0,
+    "mae": 3.558957576751709,
+    "nmae": 0.056978553755376936,
+    "paper2_nmae_seed": 0.0579,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_pems-bay_rev1parity_seed1.pth",
+    "model": "student_attn_baseline",
+    "seed": 1,
+    "mae": 3.564188241958618,
+    "nmae": 0.057062296180578946,
+    "paper2_nmae_seed": 0.0581,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_pems-bay_rev1parity_seed2.pth",
+    "model": "student_attn_baseline",
+    "seed": 2,
+    "mae": 3.6072704792022705,
+    "nmae": 0.057752038476672804,
+    "paper2_nmae_seed": 0.057,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_pems-bay_rev1parity_seed3.pth",
+    "model": "student_attn_baseline",
+    "seed": 3,
+    "mae": 3.6149513721466064,
+    "nmae": 0.05787500880213467,
+    "paper2_nmae_seed": 0.0575,
+    "matches_paper2_seed": false
+  },
+  {
+    "dataset": "pems-bay",
+    "file": "checkpoints/drive/rev1/student_attention_baseline_pems-bay_rev1parity_seed4.pth",
+    "model": "student_attn_baseline",
+    "seed": 4,
+    "mae": 3.596449375152588,
+    "nmae": 0.05757879368645248,
+    "paper2_nmae_seed": 0.0577,
+    "matches_paper2_seed": false
+  }
+]

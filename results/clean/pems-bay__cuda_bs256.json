@@ -1,0 +1,83 @@
+{
+  "dataset": "pems-bay",
+  "device": "cuda",
+  "batch_size": 256,
+  "tolerance_rel": 0.005,
+  "all_pass": true,
+  "rows": [
+    {
+      "model": "persistence",
+      "checkpoint": null,
+      "mae": 2.1775436401367188,
+      "nmae": 0.034862253814935684,
+      "rmse": 5.177720069885254,
+      "seconds": 1.1,
+      "max_rel_dev": null,
+      "status": "NO_REFERENCE"
+    },
+    {
+      "model": "seasonal_naive",
+      "checkpoint": null,
+      "mae": 3.3723349571228027,
+      "nmae": 0.053990744054317474,
+      "rmse": 7.745388507843018,
+      "seconds": 1.2,
+      "max_rel_dev": null,
+      "status": "NO_REFERENCE"
+    },
+    {
+      "model": "dcrnn",
+      "checkpoint": "dcrnn_pems-bay.pth",
+      "mae": 2.1074488162994385,
+      "nmae": 0.03374004364013672,
+      "rmse": 4.576944351196289,
+      "seconds": 36.5,
+      "paper2_mae": 2.1073644161224365,
+      "max_rel_dev": 4.005010850960389e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "student_mlp_baseline",
+      "status": "MISSING",
+      "detail": "student_mlp_baseline checkpoint missing for pems-bay: /home/hilmi/paper7_SFT/stc_snapshot/models/student_baseline_pems-bay.pth"
+    },
+    {
+      "model": "student_mlp_kd",
+      "status": "MISSING",
+      "detail": "student_mlp_kd checkpoint missing for pems-bay: /home/hilmi/paper7_SFT/stc_snapshot/models/best_student_pems-bay.pth"
+    },
+    {
+      "model": "student_attn_baseline",
+      "checkpoint": "student_attention_baseline_pems-bay.pth",
+      "mae": 3.5709521770477295,
+      "nmae": 0.05717058479785919,
+      "rmse": 6.13841438293457,
+      "seconds": 3.8,
+      "paper2_mae": 3.570579767227173,
+      "max_rel_dev": 0.00010429953545099124,
+      "status": "PASS"
+    },
+    {
+      "model": "student_attn_kd_at",
+      "checkpoint": "best_student_attention_pems-bay_v1.pth",
+      "mae": 3.541191339492798,
+      "nmae": 0.056694116443395615,
+      "rmse": 6.141907691955566,
+      "seconds": 2.6,
+      "paper2_mae": 3.541095733642578,
+      "max_rel_dev": 2.6998945031664334e-05,
+      "status": "PASS"
+    },
+    {
+      "model": "last_window_naive",
+      "checkpoint": null,
+      "mae": 3.048112154006958,
+      "nmae": 0.048799969255924225,
+      "rmse": 7.024506092071533,
+      "seconds": 1.2,
+      "paper2_mae": 3.048112154006958,
+      "max_rel_dev": 0.0,
+      "status": "PASS"
+    }
+  ]
+}
