@@ -61,7 +61,7 @@ def fig_contamination(fault="dropout"):
     """Healthy-sensor ratio R_H and faulty-sensor MAE vs fraction, random vs clustered faults."""
     cols = [("ratio_healthy_mae_nz_mean", "random"), ("ratio_healthy_mae_nz_mean", "clustered"),
             ("faulty_mae_nz_mean", "random"), ("faulty_mae_nz_mean", "clustered")]
-    fig, axes = plt.subplots(2, 4, figsize=(WIDTH, 8.4 * CM), sharex=True)
+    fig, axes = plt.subplots(2, 4, figsize=(WIDTH, 6.9 * CM), sharex=True)
     for r, (ds, dname) in enumerate(DATASETS):
         g = groups(ds)
         for c, (col, pattern) in enumerate(cols):
@@ -71,7 +71,7 @@ def fig_contamination(fault="dropout"):
                 if len(x):
                     ax.plot(x, y, color=colr, ls=ls, marker=mk, label=lab)
             panel_tag(ax, f"{dname}, {pattern}")
-            ax.set_xticks([10, 20, 30, 50])
+            ax.set_xticks([10, 30, 50])
             if r == 1:
                 ax.set_xlabel("Faulty sensors (%)")
         for c0 in (0, 2):  # random and clustered panels of one metric share the y range
@@ -79,11 +79,11 @@ def fig_contamination(fault="dropout"):
             hi = max(axes[r, c0].get_ylim()[1], axes[r, c0 + 1].get_ylim()[1])
             for c in (c0, c0 + 1):
                 axes[r, c].set_ylim(0 if c0 == 2 else lo, hi * 1.3)
-        axes[r, 0].set_ylabel("Healthy-sensor ratio $R_H$")
-        axes[r, 2].set_ylabel("Faulty-sensor MAE (mph)")
+        axes[r, 0].set_ylabel("Healthy ratio $R_H$")
+        axes[r, 2].set_ylabel("Faulty MAE (mph)")
     h, l = axes[0, 0].get_legend_handles_labels()
     fig.legend(h, l, loc="lower center", ncol=len(l), frameon=False, bbox_to_anchor=(0.5, -0.01))
-    fig.tight_layout(rect=(0, 0.06, 1, 1), w_pad=0.9, h_pad=0.5)
+    fig.tight_layout(rect=(0, 0.07, 1, 1), w_pad=0.9, h_pad=0.4)
     fig.savefig(OUT / "fig2_contamination.pdf")
     plt.close(fig)
 

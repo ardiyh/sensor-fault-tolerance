@@ -1,4 +1,4 @@
-"""Manuscript Table 2 as a LaTeX body (SFT-paper/tables/tab2_main.tex) from results/full.
+"""Manuscript Table 2 as a LaTeX tabular (SFT-paper/tables/tab2_main.tex) from results/full.
 
 Table 2: MAE (mph, native zeros excluded) on clean input and with 20% random faulty sensors,
          mean +/- std over mask seeds and training seeds, plus the two remedies. The distillation
@@ -30,7 +30,8 @@ def pm(m, s, nd=2):
 
 
 def table_main(frac=0.2, pattern="random"):
-    lines = []
+    lines = ["\\begin{tabular}{lcccccc}", "\\hline",
+             "Forecaster & Clean & Dropout & Stuck & Long stuck & Noise & Bias \\\\", "\\hline"]
     for ds, dname in DATASETS:
         g = pd.read_csv(ROOT / "results" / "full" / f"{ds}__groups.csv")
         lines.append(f"\\multicolumn{{7}}{{l}}{{\\textit{{{dname}}}}} \\\\")
@@ -44,6 +45,7 @@ def table_main(frac=0.2, pattern="random"):
                 r = sel[(sel.fault == f) & (sel.pattern == pattern) & np.isclose(sel.frac, frac)]
                 cells.append(pm(r.all_mae_nz_mean.iloc[0], r.all_mae_nz_std.iloc[0]) if len(r) else "--")
             lines.append(f"{name} & " + " & ".join(cells) + " \\\\")
+    lines += ["\\hline", "\\end{tabular}"]
     (OUT / "tab2_main.tex").write_text("\n".join(lines) + "\n")
 
 
