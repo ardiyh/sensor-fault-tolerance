@@ -1,0 +1,26 @@
+{
+ "metr-la": {
+  "train_mean": 54.40591049194336,
+  "train_std": 19.494253158569336,
+  "noise_sigma_mph": 9.747126579284668,
+  "bias_mph": 9.747126579284668,
+  "test_windows": 6832,
+  "sensors": 207,
+  "directed_edges": 1515,
+  "isolated_sensors": 1,
+  "timesteps": 34272,
+  "period_steps": 288
+ },
+ "pems-bay": {
+  "train_mean": 62.73689270019531,
+  "train_std": 9.436833381652832,
+  "noise_sigma_mph": 4.718416690826416,
+  "bias_mph": 4.718416690826416,
+  "test_windows": 10401,
+  "sensors": 325,
+  "directed_edges": 2369,
+  "isolated_sensors": 6,
+  "timesteps": 52116,
+  "period_steps": 288
+ }
+}

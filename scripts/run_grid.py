@@ -110,6 +110,18 @@ def main():
             pernode[key + "|nz"] = (sums["err_nz"] / np.maximum(sums["cnt_nz"], 1)).astype(np.float32)
             pernode[key + "|all"] = (sums["err"] / sums["cnt"]).astype(np.float32)
 
+    out = ROOT / args.out
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    def flush():
+        """Rewrite the CSV and per-node arrays so a crash loses at most one fault type."""
+        keys = list(dict.fromkeys(k for r in rows for k in r))
+        with open(out, "w", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=keys)
+            w.writeheader()
+            w.writerows(rows)
+        np.savez_compressed(out.with_suffix(".pernode.npz"), **pernode)
+
     x_np, xsn_np = split["x"], split["x_sn"]
     x0, xsn0 = torch.from_numpy(x_np).to(dev), torch.from_numpy(xsn_np).to(dev)
     none = np.zeros(n, dtype=bool)
@@ -144,15 +156,9 @@ def main():
                                "flag_rate_healthy": float(fl[:, ~mk].float().mean())}
                         score(xr, xsr, kind, pattern, frac, seed, mask, 1, det)
                 print(f"  {kind} {pattern} {frac}: {len(rows)} rows, {time.time() - t0:.0f}s", flush=True)
+        flush()
 
-    out = ROOT / args.out
-    out.parent.mkdir(parents=True, exist_ok=True)
-    keys = list(dict.fromkeys(k for r in rows for k in r))
-    with open(out, "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=keys)
-        w.writeheader()
-        w.writerows(rows)
-    np.savez_compressed(out.with_suffix(".pernode.npz"), **pernode)
+    flush()
     print(f"wrote {out} ({len(rows)} rows) in {time.time() - t0:.0f}s")
 
 
