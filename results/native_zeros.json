@@ -1,0 +1,28 @@
+{
+  "metr-la": {
+    "timesteps": 34272,
+    "sensors": 207,
+    "zero_rate_all": 0.08109350825676487,
+    "zero_rate_train": 0.07132198802641197,
+    "zero_rate_test": 0.12102523987216214,
+    "test_timesteps_all_sensors_zero": 666,
+    "test_per_sensor_zero_rate_median": 0.09817651349380015,
+    "test_per_sensor_zero_rate_max": 0.4446389496717724,
+    "test_sensors_above_10pct_zero": 90,
+    "test_target_entries_zero": 0.12139307493013836,
+    "test_input_entries_zero": 0.12134116189043131
+  },
+  "pems-bay": {
+    "timesteps": 52116,
+    "sensors": 325,
+    "zero_rate_all": 3.075978438630983e-05,
+    "zero_rate_train": 1.4507024731525156e-05,
+    "zero_rate_test": 6.405336796741249e-05,
+    "test_timesteps_all_sensors_zero": 0,
+    "test_per_sensor_zero_rate_median": 9.593246354566385e-05,
+    "test_per_sensor_zero_rate_max": 9.593246354566385e-05,
+    "test_sensors_above_10pct_zero": 0,
+    "test_target_entries_zero": 6.419501083475702e-05,
+    "test_input_entries_zero": 6.419501083475702e-05
+  }
+}

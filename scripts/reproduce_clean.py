@@ -78,7 +78,7 @@ def main():
         if ref is not None:
             row["paper2_mae"] = float(ref["mae"])
         refs = [row[k] for k in ("dams_mae", "paper2_mae") if k in row]
-        row["max_rel_dev"] = max(abs(mae - r) / r for r in refs) if refs else None
+        row["max_rel_dev"] = float(max(abs(mae - r) / r for r in refs)) if refs else None
         row["status"] = ("PASS" if refs and row["max_rel_dev"] <= TOL_REL
                          else "NO_REFERENCE" if not refs else "FAIL")
         ok_all &= row["status"] != "FAIL"
