@@ -37,16 +37,17 @@ zero speed; 12.1% of its test readings are zero. The unmasked errors are kept al
 The reported runs used Python 3.10, PyTorch 2.3.1 (CUDA 12.1), PyTorch Geometric 2.8.0, NumPy 2.2,
 SciPy 1.15, pandas 2.3, and matplotlib 3.10 on an NVIDIA RTX 3070 (8 GB).
 
-The student checkpoints and their model and data-loading code come from the ST-Chronos codebase,
-which is not part of this repository. `src/stc_bridge.py` is the only module that imports it; set
-`STC_ROOT` to a copy that contains `models/`, `utils/`, `data/` (METR-LA and PEMS-BAY in the DCRNN
-release format) and the checkpoints listed in `configs/`. Nothing in this repository modifies that
-codebase.
+The model and data-loading code of the students comes from
+[st-chronos](https://github.com/ardiyh/st-chronos), together with the checkpoints marked `p2:` in
+`configs/`. `src/stc_bridge.py` is the only module that imports it. Set `STC_ROOT` to a clone of
+that repository, with METR-LA and PEMS-BAY downloaded by its `scripts/download_data.py`. Nothing in
+this repository modifies that code. The five-seed student checkpoints, and the models trained in
+this study (paths under `checkpoints/` in `configs/`), are not tracked here.
 
 ## Reproducing the results
 
 ```bash
-export STC_ROOT=/path/to/STC-code
+export STC_ROOT=/path/to/st-chronos
 pytest                                                    # unit tests
 python -m scripts.reproduce_clean --dataset metr-la       # clean errors vs the published ones
 python -m scripts.run_grid --dataset metr-la --device cuda --out results/full/metr-la__light.csv \
