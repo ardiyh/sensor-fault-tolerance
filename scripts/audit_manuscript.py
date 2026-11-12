@@ -1,4 +1,4 @@
-"""Check SFT-paper/main_ijra against the IJRA rules in PROMPT_PAPER7_IJRA_OPUS.md.
+"""Check SFT-paper/main_ijra against the IAES IJRA author guidelines.
 
 Reads the compiled PDF, the section sources, and the .bbl/.bib. Prints one line per rule.
 
